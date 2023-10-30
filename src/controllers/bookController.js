@@ -120,7 +120,7 @@ const editBook=async(req,res)=>{
  
  }
 
- const getbook=async(req,res)=>{
+ const getUserbooks=async(req,res)=>{
 
     try {
     //  let {userId}=req.body
@@ -167,5 +167,5 @@ const editBook=async(req,res)=>{
  }
 
  module.exports={
-    createBook,editBook,delBook,getbook
+    createBook,editBook,delBook,getUserbooks
  }
