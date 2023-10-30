@@ -165,7 +165,51 @@ const editBook=async(req,res)=>{
     }
  
  }
+ const getSinglebook=async(req,res)=>{
+
+    try {
+    let {bookId}=req.body
+    let userLogged= req.userLogged
+    let authorId=userLogged._id
+    console.log("--------userLogged-----",userLogged)
+     console.log("BODY",req.body)
+     if(!authorId){
+         return res.status(400).json({
+             status:400,
+             message:'Please fill required fields',
+             data:{}
+         })
+     }
+    
+     let userExists=userDb.findOne({_id:authorId,isDeleted:false,})
+ 
+     if(!userExists){
+         return res.status(400).json({
+             status:400,
+             message:'No such user Exist',
+             data:{}
+         })
+     }
+    
+     let book= await bookDb.find({authorId:authorId,isDeleted:false,_id:bookId})
+ 
+     if(book){
+         return res.status(200).json({
+             status:200,
+             message:'books fetched succesfully',
+             data:book
+         })
+     }
+    } catch (error) {
+     return res.status(400).json({
+         status:400,
+         message:error.message,
+         data:{}
+     })
+    }
+ 
+ }
 
  module.exports={
-    createBook,editBook,delBook,getUserbooks
+    createBook,editBook,delBook,getUserbooks,getSinglebook
  }
