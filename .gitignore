@@ -3,4 +3,4 @@ node_modules/
 **/*.JPEG
 **/*.pdf
 **/*.rar
-**/*.env
+# **/*.env
