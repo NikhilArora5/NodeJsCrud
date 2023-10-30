@@ -31,6 +31,9 @@ const bookRouter=require("./src/routes/book")
 
 app.use("/user/",userRouter)
 app.use("/book/",bookRouter)
+app.get("/",(req,res)=>{
+    res.send("Hello Deployed")
+  })
 
 app.listen(PORT,(err)=>{
     if(err){
