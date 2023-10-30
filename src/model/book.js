@@ -1,9 +1,9 @@
 const mongoose=require("mongoose")
 const Schema=mongoose.Schema
-const User=mongoose.Schema({
+const Book=mongoose.Schema({
 
     
-        authorId:{
+        userId:{
             type: Schema.Types.ObjectId,
             ref: "user",
             required:true
@@ -18,6 +18,10 @@ const User=mongoose.Schema({
             type:String,
             required:true
         },
+        authorName:{
+            type:String,
+            required:true
+        },
         isDeleted:{
             type:Boolean,
             default:false
@@ -28,4 +32,4 @@ const User=mongoose.Schema({
 })
 
 
-module.exports=mongoose.model("book",User)
+module.exports=mongoose.model("book",Book)

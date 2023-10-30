@@ -7,13 +7,13 @@ const userDb=require("../model/book")
 const createBook = async (req, res) => {
   try {
     console.log("-body-", req.body);
-    let { title, summary } = req.body;
+    let { title, summary,authorName } = req.body;
 
     let userLogged=req.userLogged
     console.log("userLogged",userLogged)
-    let authorId=userLogged._id
+    let userId=userLogged._id
 
-    if (!title || !summary) {
+    if (!title || !summary || !authorName) {
       return res.status(400).json({
         status: 400,
         message: "Please fill all fields",
@@ -24,7 +24,8 @@ const createBook = async (req, res) => {
     let bookSaved = await bookDb.create({
       title,
       summary,
-      authorId
+      userId,
+      authorName
     });
 
     // let token=await genToken(bookSaved._id)
@@ -125,11 +126,11 @@ const editBook=async(req,res)=>{
     try {
     //  let {userId}=req.body
     let userLogged= req.userLogged
-    let authorId=userLogged._id
+    let userId=userLogged._id
     console.log("--------userLogged-----",userLogged)
      console.log("BODY",req.body)
      let clientLogged=req.clientLogged
-     if(!authorId){
+     if(!userId){
          return res.status(400).json({
              status:400,
              message:'Please fill required fields',
@@ -137,7 +138,7 @@ const editBook=async(req,res)=>{
          })
      }
     
-     let userExists=userDb.findOne({_id:authorId,isDeleted:false})
+     let userExists=userDb.findOne({_id:userId,isDeleted:false})
  
      if(!userExists){
          return res.status(400).json({
@@ -147,7 +148,7 @@ const editBook=async(req,res)=>{
          })
      }
     
-     let bookS= await bookDb.find({authorId:authorId,isDeleted:false})
+     let bookS= await bookDb.find({userId:userId,isDeleted:false})
  
      if(bookS){
          return res.status(200).json({
@@ -170,10 +171,10 @@ const editBook=async(req,res)=>{
     try {
     let {bookId}=req.body
     let userLogged= req.userLogged
-    let authorId=userLogged._id
+    let userId=userLogged._id
     console.log("--------userLogged-----",userLogged)
      console.log("BODY",req.body)
-     if(!authorId){
+     if(!userId){
          return res.status(400).json({
              status:400,
              message:'Please fill required fields',
@@ -181,7 +182,7 @@ const editBook=async(req,res)=>{
          })
      }
     
-     let userExists=userDb.findOne({_id:authorId,isDeleted:false,})
+     let userExists=userDb.findOne({_id:userId,isDeleted:false,})
  
      if(!userExists){
          return res.status(400).json({
@@ -191,7 +192,7 @@ const editBook=async(req,res)=>{
          })
      }
     
-     let book= await bookDb.find({authorId:authorId,isDeleted:false,_id:bookId})
+     let book= await bookDb.find({userId:userId,isDeleted:false,_id:bookId})
  
      if(book){
          return res.status(200).json({
