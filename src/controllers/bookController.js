@@ -196,7 +196,7 @@ const editBook=async(req,res)=>{
      if(book){
          return res.status(200).json({
              status:200,
-             message:'books fetched succesfully',
+             message:'book data succesfully',
              data:book
          })
      }
