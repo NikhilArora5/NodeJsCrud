@@ -50,6 +50,7 @@
 
 #### Assumptions/Decision
 - I have tried to complete assignment as per the given instructions
+- I have used POSTMAN to test and make request to the Apis.
 - Please refer to the below Points which i have consider as per the given instructions to complete the assignment
   - User has to first register and then login using the credentials
   - user Authentication is setup in order to view/add/delete books in relation to a user
