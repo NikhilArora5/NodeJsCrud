@@ -32,7 +32,7 @@ const bookRouter=require("./src/routes/book")
 app.use("/user/",userRouter)
 app.use("/book/",bookRouter)
 app.get("/",(req,res)=>{
-    res.send("Hello Deployed")
+    res.send("Hello Deployed Node js Crud App")
   })
 
 app.listen(PORT,(err)=>{
