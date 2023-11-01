@@ -5,14 +5,15 @@ const verifyUser=async(req,res,next)=>{
     try {
         let token=req.cookies.token||req.headers.token
         // console.log("-------------req.cookies",req.cookies)
+        if(!token){
+            return res.status(401).json({
+                message:"invalid user ",
+                staus:401
+                
+        })
         let decoded=jwt.verify(token,process.env.JWT_SECRET)
 
-    if(!token){
-        return res.status(401).json({
-            message:"invalid user ",
-            staus:401
-            
-    })
+    
     }
     
     let userLogged=await user.findOne({_id:decoded.id},{password:0})
