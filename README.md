@@ -60,6 +60,9 @@
 #### Deployed server url
 - https://node-js-crud-ten.vercel.app
 
+#### Youtube video Link
+- https://youtu.be/G5O5U_508OM
+
 #### Github Repository Link
 - https://github.com/NikhilArora5/NodeJsCrud
 
@@ -68,6 +71,8 @@
 
 #### Portfolio 
 - https://nikhilarora-protfolio.netlify.app/
+
+
 
 
 
