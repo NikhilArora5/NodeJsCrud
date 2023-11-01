@@ -75,7 +75,7 @@ const delBook=async(req,res)=>{
          })
      }else{
         return res.status(400).json({
-            status:200,
+            status:400,
             message:'No such book exist',
             data:{}
         })
@@ -200,6 +200,12 @@ const editBook=async(req,res)=>{
              message:'book data succesfully',
              data:book
          })
+     }else{
+        return res.status(400).json({
+            status:400,
+            message:'No such Book Exist',
+            data:{}
+        })
      }
     } catch (error) {
      return res.status(400).json({
